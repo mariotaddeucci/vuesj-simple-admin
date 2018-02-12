@@ -5,15 +5,19 @@ import VueAxios from 'vue-axios'
 import VueCookie from 'vue-cookie'
 
 /* Other Libs*/
-import axios from './customAxios';
+import axios from 'axios';
 import Bulma from 'bulma';
 import './assets/style.scss'
 
 import App from './App.vue';
 import CustomRoutes from './routes';
 
+var CustomAxios = axios.create({
+	baseURL: 'http://127.0.0.1:5000/api/',
+});
+
 Vue.use(VueCookie)
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, CustomAxios)
 Vue.use(VueRouter)
 
 
