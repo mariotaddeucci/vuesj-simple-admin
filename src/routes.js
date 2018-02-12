@@ -5,7 +5,7 @@ import Generic2 from './router/Generic2.vue';
 
 var menu_tree = [
 {path:'/', component:Home, label:'Home'},
-{path:'/generic', component:Generic, label:'Generci', sub:[
+{path:'/generic', component:Generic, label:'Generic', sub:[
 
 {path:'/generic2', component:Generic2, label:'Sub Gen 2'},
 ]}
