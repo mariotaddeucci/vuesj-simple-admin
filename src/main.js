@@ -2,7 +2,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueAxios from 'vue-axios'
-import VueCookie from 'vue-cookie'
 
 /* Other Libs*/
 import axios from 'axios';
@@ -16,7 +15,6 @@ var CustomAxios = axios.create({
 	baseURL: 'http://127.0.0.1:5000/api/',
 });
 
-Vue.use(VueCookie)
 Vue.use(VueAxios, CustomAxios)
 Vue.use(VueRouter)
 
@@ -26,7 +24,6 @@ const router = new VueRouter({
 	routes,
 	mode:'history'
 });
-
 
 new Vue({
 	el: '#app',
