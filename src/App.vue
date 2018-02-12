@@ -29,7 +29,6 @@
               Exceptions
             </a>
           </div>
-
         </div>
       </div>
     </nav>
@@ -44,37 +43,16 @@
             </p>
             <ul class="menu-list">
               <li v-for="route in routes">
-                <a :href="route.path" class="is-active">{{route.name}}</a>
-              </li>
-            </ul>
-            <p class="menu-label">
-              Administration
-            </p>
-            <ul class="menu-list">
-              <li><a>Team Settings</a></li>
-              <li>
-                <a class="">Manage Your Team</a>
-                <ul>
-                  <li><a>Members</a></li>
-                  <li><a>Plugins</a></li>
-                  <li><a>Add a member</a></li>
+                <router-link :to="route.path">{{route.label}}</router-link>
+                <ul v-if="hasSubMenu(route)">
+                  <li v-for="sub in route.sub">
+                    <router-link :to="sub.path">{{sub.label}}</router-link>
+                  </li>
                 </ul>
               </li>
-              <li><a>Invitations</a></li>
-              <li><a>Cloud Storage Environment Settings</a></li>
-              <li><a>Authentication</a></li>
-            </ul>
-            <p class="menu-label">
-              Transactions
-            </p>
-            <ul class="menu-list">
-              <li><a>Payments</a></li>
-              <li><a>Transfers</a></li>
-              <li><a>Balance</a></li>
             </ul>
           </nav>
         </aside>
-        
         <main class="column">
           <router-view></router-view>
         </main>
@@ -84,15 +62,16 @@
 </template>
 
 <script type="text/javascript">
+import CustomRoutes from './routes';
 export default {
-  created() {
-    this.routes = this.$router.options.routes.map(function(obj){
-      return obj;
-    });
-  }
-  , data() {
+  data() {
     return {
-      routes: []
+      routes:CustomRoutes.getMenu()
+    }
+  },
+  methods:{
+    hasSubMenu(obj){
+      return Object.keys(obj).indexOf('sub') > -1;
     }
   }
 }

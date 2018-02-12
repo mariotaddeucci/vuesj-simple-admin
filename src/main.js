@@ -10,20 +10,14 @@ import Bulma from 'bulma';
 import './assets/style.scss'
 
 import App from './App.vue';
-
-import PageHome from './router/Home.vue'
+import CustomRoutes from './routes';
 
 Vue.use(VueCookie)
 Vue.use(VueAxios, axios)
 Vue.use(VueRouter)
 
 
-const routes =[
-{path:'/', component:PageHome, name:'Home'},
-];
-
-
-
+const routes  =CustomRoutes.getRoutes();
 const router = new VueRouter({
 	routes,
 	mode:'history'
