@@ -60,19 +60,3 @@
     </div>
   </div>
 </template>
-
-<script type="text/javascript">
-import CustomRoutes from './routes';
-export default {
-  data() {
-    return {
-      routes:CustomRoutes.getMenu()
-    }
-  },
-  methods:{
-    hasSubMenu(obj){
-      return Object.keys(obj).indexOf('sub') > -1;
-    }
-  }
-}
-</script>
